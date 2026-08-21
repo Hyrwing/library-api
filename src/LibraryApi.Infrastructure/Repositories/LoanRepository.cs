@@ -36,7 +36,10 @@ public class LoanRepository : ILoanRepository
     }
 
     public async Task AddAsync(Loan loan, CancellationToken ct)
-    { _db.Loans.Add(loan); await _db.SaveChangesAsync(ct); }
+    { 
+        _db.Loans.Add(loan); 
+        await _db.SaveChangesAsync(ct); 
+    }
 
     public async Task UpdateAsync(Loan loan, CancellationToken ct)
         => await _db.SaveChangesAsync(ct);

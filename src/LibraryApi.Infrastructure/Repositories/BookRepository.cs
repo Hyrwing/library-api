@@ -46,13 +46,19 @@ public class BookRepository : IBookRepository
     }
 
     public async Task AddAsync(Book book, CancellationToken ct)
-    { _db.Books.Add(book); await _db.SaveChangesAsync(ct); }
+    { 
+        _db.Books.Add(book); 
+        await _db.SaveChangesAsync(ct); 
+    }
 
     public async Task UpdateAsync(Book book, CancellationToken ct)
         => await _db.SaveChangesAsync(ct);
 
     public async Task DeleteAsync(Book book, CancellationToken ct)
-    { _db.Books.Remove(book); await _db.SaveChangesAsync(ct); }
+    { 
+        _db.Books.Remove(book); 
+        await _db.SaveChangesAsync(ct); 
+    }
 
     public async Task<bool> HasLoansAsync(Guid bookId, CancellationToken ct)
         => await _db.Loans.AnyAsync(l => l.BookId == bookId, ct);

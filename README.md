@@ -86,7 +86,6 @@ Tests use EF Core InMemory provider — no external database required.
 
 | Decision | Choice | Why |
 |----------|--------|-----|
-| No MediatR | Direct service injection | Simpler to understand and explain; less overhead for a small project |
 | SQLite | File-based database | Zero setup, cross-platform, supports EF Core migrations |
 | EF InMemory for tests | No external DB dependency | Tests run fast and anywhere without setup |
 | FluentValidation | Endpoint filter pattern | Consistent, testable, cross-cutting validation |
