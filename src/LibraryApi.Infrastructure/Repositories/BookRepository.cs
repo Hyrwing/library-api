@@ -27,13 +27,14 @@ public class BookRepository : IBookRepository
         var query = _db.Books.Include(b => b.Loans).AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(search))
-            query = query.Where(b => b.Title.Contains(search) || b.Author.Contains(search));
+            query = query.Where(b =>
+                EF.Functions.Like(b.Title, $"%{search}%") || EF.Functions.Like(b.Author, $"%{search}%"));
         if (!string.IsNullOrWhiteSpace(title))
-            query = query.Where(b => b.Title.Contains(title));
+            query = query.Where(b => EF.Functions.Like(b.Title, $"%{title}%"));
         if (!string.IsNullOrWhiteSpace(author))
-            query = query.Where(b => b.Author.Contains(author));
+            query = query.Where(b => EF.Functions.Like(b.Author, $"%{author}%"));
         if (!string.IsNullOrWhiteSpace(genre))
-            query = query.Where(b => b.Genre == genre);
+            query = query.Where(b => EF.Functions.Like(b.Genre, $"%{genre}%"));
         if (available.HasValue)
             query = available.Value
                 ? query.Where(b => !b.Loans.Any(l => l.ReturnDate == null))

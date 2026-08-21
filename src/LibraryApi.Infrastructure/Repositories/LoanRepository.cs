@@ -22,7 +22,7 @@ public class LoanRepository : ILoanRepository
     {
         var query = _db.Loans.Include(l => l.Book).AsQueryable();
         if (!string.IsNullOrWhiteSpace(search))
-            query = query.Where(l => l.BorrowerName.Contains(search));
+            query = query.Where(l => EF.Functions.Like(l.BorrowerName, $"%{search}%"));
         if (bookId.HasValue)
             query = query.Where(l => l.BookId == bookId.Value);
         if (active.HasValue)
