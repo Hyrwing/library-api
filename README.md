@@ -27,8 +27,8 @@ cd LibraryApi
 # Run the API (auto-applies migrations and seeds 100 books)
 dotnet run --project src/LibraryApi.Api
 
-# Swagger UI available at:
-# http://localhost:5000/swagger
+# Swagger UI available at the URL shown in the console output, e.g.:
+# http://localhost:5233/swagger
 ```
 
 ## Running Tests
