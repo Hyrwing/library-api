@@ -24,7 +24,7 @@ Domain → Application → Infrastructure → Api
 git clone <your-repo-url>
 cd LibraryApi
 
-# Run the API (auto-applies migrations and seeds 100 books)
+# Run the API (uses SQLite - auto-applies migrations and seeds 100 books)
 dotnet run --project src/LibraryApi.Api
 
 # Swagger UI available at the URL shown in the console output, e.g.:
